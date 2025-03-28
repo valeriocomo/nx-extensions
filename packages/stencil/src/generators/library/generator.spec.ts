@@ -130,6 +130,7 @@ describe('library', () => {
   describe('default libraries', () => {
     const options: RawLibrarySchema = {
       directory: 'libs/testlib',
+      name: 'testlib',
       buildable: false,
       publishable: false,
     };
@@ -163,6 +164,7 @@ describe('library', () => {
   describe('buildable libraries', () => {
     const options: RawLibrarySchema = {
       directory: 'libs/testlib',
+      name: 'testlib',
       buildable: true,
       publishable: false,
       component: true,
@@ -215,6 +217,7 @@ describe('library', () => {
   describe('publishable libraries', () => {
     const options: RawLibrarySchema = {
       directory: 'libs/testlib',
+      name: 'testlib',
       buildable: false,
       publishable: true,
       importPath: '@myorg/mylib',
