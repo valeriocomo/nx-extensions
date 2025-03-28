@@ -18,7 +18,8 @@ import { addProject } from './lib/add-project';
 import { makeLibBuildableGenerator } from '../../generators/make-lib-buildable/make-lib-buildable';
 import {
   determineProjectNameAndRootOptions,
-  ensureProjectName,
+  ensureRootProjectName,
+  // ensureProjectName,
 } from '@nx/devkit/src/generators/project-name-and-root-utils';
 import { assertNotUsingTsSolutionSetup } from '@nx/js/src/utils/typescript/ts-solution-setup';
 import { initGenerator as jsInitGenerator } from '@nx/js';
@@ -28,7 +29,7 @@ async function normalizeOptions(
   host: Tree,
   options: RawLibrarySchema
 ): Promise<LibrarySchema> {
-  await ensureProjectName(host, options, 'library');
+  await ensureRootProjectName(options, 'library');
   const {
     projectName,
     names: projectNames,
