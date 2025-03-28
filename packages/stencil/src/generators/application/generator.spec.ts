@@ -71,6 +71,8 @@ describe('schematic:application', () => {
   });
 
   it('should configure lint target', async () => {
+    process.env.ESLINT_USE_FLAT_CONFIG = 'false';
+
     await applicationGenerator(host, { ...options, linter: Linter.EsLint });
 
     const projectConfig = readProjectConfiguration(host, projectName);
@@ -97,15 +99,17 @@ describe('schematic:application', () => {
       `plugin:${getEsLintPluginBaseName(eslintImportPlugin)}/typescript`,
       '../../.eslintrc.json',
     ]);
+    
+    delete process.env.ESLINT_USE_FLAT_CONFIG;
   });
 
   it('should configure lint target with flat config', async () => {
-    process.env.ESLINT_USE_FLAT_CONFIG = 'true';
+    // process.env.ESLINT_USE_FLAT_CONFIG = 'true';
 
     await applicationGenerator(host, { ...options, linter: Linter.EsLint });
 
     const projectConfig = readProjectConfiguration(host, projectName);
-    const eslintConfigPath = 'apps/test/eslint.config.js';
+    const eslintConfigPath = 'apps/test/eslint.config.mjs';
 
     /**
      * useFlatConfig() should return false by default because in this repo we are utilizing eslint of version < 9.0.0
@@ -129,8 +133,6 @@ describe('schematic:application', () => {
       '* Having an empty rules object present makes it more obvious to the user where they would'
     );
     expect(eslintConfigJs).toContain('* extend things from if they needed to');
-
-    delete process.env.ESLINT_USE_FLAT_CONFIG;
   });
 
   it('should create files in specified dir', async () => {
