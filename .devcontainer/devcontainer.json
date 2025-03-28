@@ -14,7 +14,9 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"orta.vscode-jest"
+				"orta.vscode-jest",
+				"esbenp.prettier-vscode",
+				"dbaeumer.vscode-eslint"
 			]
 		}
 	}
