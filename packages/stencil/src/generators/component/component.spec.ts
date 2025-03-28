@@ -24,7 +24,7 @@ describe('component schematic', () => {
   };
 
   beforeEach(async () => {
-    tree = await createTestUILib(projectLibDirectory, SupportedStyles.scss);
+    tree = await createTestUILib({ name: projectName, style: SupportedStyles.scss, libDirectory: projectLibDirectory, });
   });
 
   it('should generate files', async () => {

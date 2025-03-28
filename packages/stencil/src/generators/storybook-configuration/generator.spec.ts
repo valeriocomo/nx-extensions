@@ -18,7 +18,8 @@ describe('storybook-configuration generator', () => {
   };
 
   it('should create storybook folder', async () => {
-    const host = await createTestUILib('libs/test', SupportedStyles.css, true);
+    const host = await createTestUILib({ name: 'test', style: SupportedStyles.scss, libDirectory: 'libs/test', });
+
     await storybookConfigurationGenerator(host, options);
 
     expect(host.exists('libs/test/.storybook')).toBeTruthy();
@@ -26,7 +27,8 @@ describe('storybook-configuration generator', () => {
   });
 
   it('should fail if library not buildable', async () => {
-    const host = await createTestUILib('libs/test', SupportedStyles.css, false);
+    const host = await createTestUILib({ name: 'test', style: SupportedStyles.scss, buildable: false, libDirectory: 'libs/test', });
+
     await storybookConfigurationGenerator(host, options);
 
     expect(host.exists('libs/test/.storybook')).toBeFalsy();

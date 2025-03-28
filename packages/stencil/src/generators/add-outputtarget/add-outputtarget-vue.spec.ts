@@ -16,7 +16,7 @@ describe('add-outputtarget vue', () => {
   };
 
   beforeEach(async () => {
-    tree = await createTestUILib(projectLibDirectory);
+    tree = await createTestUILib({ libDirectory: projectLibDirectory, name: projectName });
   });
 
   describe('using vue', () => {

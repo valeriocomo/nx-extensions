@@ -4,7 +4,7 @@ import { Linter } from '@nx/eslint';
 
 export interface RawLibrarySchema {
   directory: string;
-  name?: string;
+  name: string;
   tags?: string;
   skipFormat?: boolean;
   buildable: boolean;

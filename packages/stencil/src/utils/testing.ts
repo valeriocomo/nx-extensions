@@ -4,15 +4,19 @@ import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import { libraryGenerator } from '../generators/library/generator';
 import { ProjectType } from './typings';
 
+interface CreateTestUILibParams {
+  name: string,
+  libDirectory: string,
+  style?: SupportedStyles,
+  buildable?: boolean
+}
+
 /**
  * The value of `npmScope` in an nx.json file
  */
 
-export async function createTestUILib(
-  libDirectory: string,
-  style: SupportedStyles = SupportedStyles.css,
-  buildable = true
-): Promise<Tree> {
+export async function createTestUILib(params: CreateTestUILibParams): Promise<Tree> {
+  const { name, libDirectory, style = SupportedStyles.css, buildable = true,  }= params
   const host = createTreeWithEmptyWorkspace({ layout: 'apps-libs' });
   updateJson(host, '/package.json', (json) => {
     json.devDependencies = {
@@ -22,6 +26,7 @@ export async function createTestUILib(
   });
 
   await libraryGenerator(host, {
+    name,
     directory: libDirectory,
     style: style,
     buildable,
