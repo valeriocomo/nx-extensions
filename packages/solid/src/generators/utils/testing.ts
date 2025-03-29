@@ -4,12 +4,25 @@ import { Tree } from '@nx/devkit';
 import { Linter } from '@nx/eslint';
 import { libraryGenerator } from '../library/library';
 
+interface CreateTestProjectParams {
+  name: string;
+  directory: string;
+  type?: 'application' | 'library';
+  unitTestrunner?: 'none' | 'jest';
+  e2eTestrunner?: 'none' | 'cypress';
+}
+
 export async function createTestProject(
-  directory: string,
-  type: 'application' | 'library' = 'application',
-  unitTestrunner: 'none' | 'jest' = 'none',
-  e2eTestrunner: 'none' | 'cypress' = 'none'
+  params: CreateTestProjectParams
 ): Promise<Tree> {
+  const {
+    name,
+    directory,
+    type = 'application',
+    unitTestrunner = 'none',
+    e2eTestrunner = 'none'
+  } = params;
+
   const tree = createTreeWithEmptyWorkspace({ layout: 'apps-libs' });
   tree.write(
     'package.json',
@@ -26,6 +39,7 @@ export async function createTestProject(
 
   if (type === 'application') {
     await applicationGenerator(tree, {
+      name,
       directory,
       linter: Linter.EsLint,
       unitTestRunner: unitTestrunner,
