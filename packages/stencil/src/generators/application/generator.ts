@@ -19,7 +19,7 @@ import { addLinting } from './lib/add-linting';
 import { addCypress } from './lib/add-cypress';
 import {
   determineProjectNameAndRootOptions,
-  ensureRootProjectName
+  ensureRootProjectName,
   //ensureProjectName,
 } from '@nx/devkit/src/generators/project-name-and-root-utils';
 import { assertNotUsingTsSolutionSetup } from '@nx/js/src/utils/typescript/ts-solution-setup';

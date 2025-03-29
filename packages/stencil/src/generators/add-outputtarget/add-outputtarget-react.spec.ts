@@ -16,7 +16,10 @@ describe('add-outputtarget react', () => {
   };
 
   beforeEach(async () => {
-    tree = await createTestUILib({ libDirectory: projectLibDirectory, name: projectName });
+    tree = await createTestUILib({
+      libDirectory: projectLibDirectory,
+      name: projectName,
+    });
   });
 
   describe('using react', () => {

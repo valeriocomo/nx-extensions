@@ -16,12 +16,18 @@ describe('component schematic', () => {
   };
 
   it('should run successfully', async () => {
-    tree = await createTestProject({ directory: projectAppDirectory, name: projectName });
+    tree = await createTestProject({
+      directory: projectAppDirectory,
+      name: projectName,
+    });
     await expect(componentGenerator(tree, options)).resolves.not.toThrowError();
   });
 
   it('should add file', async () => {
-    tree = await createTestProject({ directory: projectAppDirectory, name: projectName });
+    tree = await createTestProject({
+      directory: projectAppDirectory,
+      name: projectName,
+    });
     await componentGenerator(tree, options);
     const name = names(componentName);
     expect(
@@ -32,7 +38,11 @@ describe('component schematic', () => {
   });
 
   it('should add file to barrel', async () => {
-    tree = await createTestProject({ directory: projectLibDirectory, name: projectName, type: 'library' });
+    tree = await createTestProject({
+      directory: projectLibDirectory,
+      name: projectName,
+      type: 'library',
+    });
     await componentGenerator(tree, options);
     const name = names(componentName);
 

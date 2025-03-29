@@ -20,7 +20,7 @@ export async function createTestProject(
     directory,
     type = 'application',
     unitTestrunner = 'none',
-    e2eTestrunner = 'none'
+    e2eTestrunner = 'none',
   } = params;
 
   const tree = createTreeWithEmptyWorkspace({ layout: 'apps-libs' });

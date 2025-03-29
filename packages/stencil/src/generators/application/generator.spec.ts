@@ -99,7 +99,7 @@ describe('schematic:application', () => {
       `plugin:${getEsLintPluginBaseName(eslintImportPlugin)}/typescript`,
       '../../.eslintrc.json',
     ]);
-    
+
     delete process.env.ESLINT_USE_FLAT_CONFIG;
   });
 

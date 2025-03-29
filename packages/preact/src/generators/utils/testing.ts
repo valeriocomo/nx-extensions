@@ -9,19 +9,19 @@ interface CreateTestProjectParams {
   directory: string;
   type?: ProjectType;
   unitTestRunner?: 'none' | 'jest';
-  e2eTestRunner?: 'none' | 'cypress'
+  e2eTestRunner?: 'none' | 'cypress';
 }
 
 export async function createTestProject(
   params: CreateTestProjectParams
 ): Promise<Tree> {
-  const { 
-    name, 
-    directory, 
-    unitTestRunner = 'none', 
-    e2eTestRunner = 'none', 
-    type = 'application' 
-  } = params
+  const {
+    name,
+    directory,
+    unitTestRunner = 'none',
+    e2eTestRunner = 'none',
+    type = 'application',
+  } = params;
   const host = createTreeWithEmptyWorkspace({ layout: 'apps-libs' });
 
   if (type === 'application') {

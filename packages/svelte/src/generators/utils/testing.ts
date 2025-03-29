@@ -6,9 +6,9 @@ import { libraryGenerator } from '../library/library';
 
 interface CreateTestProjectParams {
   name: string;
-  directory: string,
-  type?: ProjectType,
-  tree?: Tree,
+  directory: string;
+  type?: ProjectType;
+  tree?: Tree;
   unitTestrunner?: 'none' | 'jest';
   e2eTestrunner?: 'none' | 'cypress';
 }
@@ -21,13 +21,13 @@ export async function createTestProject(
   // tree: Tree = createTreeWithEmptyWorkspace({ layout: 'apps-libs' }),
   // unitTestrunner: 'none' | 'jest' = 'none',
   // e2eTestrunner: 'none' | 'cypress' = 'none'
-  const { 
-    name, 
-    directory, 
-    type = 'application', 
-    unitTestrunner = 'none', 
-    e2eTestrunner = 'none', 
-    tree = createTreeWithEmptyWorkspace({ layout: 'apps-libs' }) 
+  const {
+    name,
+    directory,
+    type = 'application',
+    unitTestrunner = 'none',
+    e2eTestrunner = 'none',
+    tree = createTreeWithEmptyWorkspace({ layout: 'apps-libs' }),
   } = params;
   tree.write(
     'package.json',

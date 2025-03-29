@@ -17,11 +17,14 @@ describe('component generator', () => {
 
   describe('application', () => {
     beforeEach(async () => {
-      tree = await createTestProject({ directory: projectName, name: projectName });
+      tree = await createTestProject({
+        directory: projectName,
+        name: projectName,
+      });
       // eslint-disable-next-line @typescript-eslint/no-empty-function
-      jest.spyOn(logger, 'warn').mockImplementation(() => { });
+      jest.spyOn(logger, 'warn').mockImplementation(() => {});
       // eslint-disable-next-line @typescript-eslint/no-empty-function
-      jest.spyOn(logger, 'debug').mockImplementation(() => { });
+      jest.spyOn(logger, 'debug').mockImplementation(() => {});
     });
 
     it('should run successfully', async () => {
@@ -41,11 +44,15 @@ describe('component generator', () => {
 
   describe('library', () => {
     beforeEach(async () => {
-      tree = await createTestProject({ name: projectName, directory: projectLibDirectory, type: 'library' });
+      tree = await createTestProject({
+        name: projectName,
+        directory: projectLibDirectory,
+        type: 'library',
+      });
       // eslint-disable-next-line @typescript-eslint/no-empty-function
-      jest.spyOn(logger, 'warn').mockImplementation(() => { });
+      jest.spyOn(logger, 'warn').mockImplementation(() => {});
       // eslint-disable-next-line @typescript-eslint/no-empty-function
-      jest.spyOn(logger, 'debug').mockImplementation(() => { });
+      jest.spyOn(logger, 'debug').mockImplementation(() => {});
     });
 
     it('should add file to barrel', async () => {
