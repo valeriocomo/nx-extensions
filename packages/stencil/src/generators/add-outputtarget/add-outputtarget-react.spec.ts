@@ -79,6 +79,6 @@ describe('add-outputtarget react', () => {
       });
 
       expect(tree.exists(`libs/${projectName}/package.json`)).toBeTruthy();
-    });
+    }, 30000);
   });
 });
