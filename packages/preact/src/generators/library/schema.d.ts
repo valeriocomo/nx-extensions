@@ -2,7 +2,7 @@ import { Linter } from '@nx/eslint';
 
 export interface PreactLibrarySchema {
   directory: string;
-  name?: string;
+  name: string;
   tags?: string;
   linter: Linter;
   unitTestRunner: 'vitest' | 'jest' | 'none';
