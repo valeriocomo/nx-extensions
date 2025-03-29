@@ -50,10 +50,6 @@ describe('application', () => {
     });
   });
 
-  /**
-   * @jest-environment node
-   */
-
   it('should add dependencies to package.json', async () => {
     await configurationGenerator(host, options);
 
