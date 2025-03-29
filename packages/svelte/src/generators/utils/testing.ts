@@ -4,13 +4,31 @@ import { Tree, ProjectType } from '@nx/devkit';
 import { Linter } from '@nx/eslint';
 import { libraryGenerator } from '../library/library';
 
-export async function createTestProject(
+interface CreateTestProjectParams {
+  name: string;
   directory: string,
-  type: ProjectType = 'application',
-  tree: Tree = createTreeWithEmptyWorkspace({ layout: 'apps-libs' }),
-  unitTestrunner: 'none' | 'jest' = 'none',
-  e2eTestrunner: 'none' | 'cypress' = 'none'
+  type?: ProjectType,
+  tree?: Tree,
+  unitTestrunner?: 'none' | 'jest';
+  e2eTestrunner?: 'none' | 'cypress';
+}
+
+export async function createTestProject(
+  params: CreateTestProjectParams
 ): Promise<Tree> {
+  // directory: string,
+  // type: ProjectType = 'application',
+  // tree: Tree = createTreeWithEmptyWorkspace({ layout: 'apps-libs' }),
+  // unitTestrunner: 'none' | 'jest' = 'none',
+  // e2eTestrunner: 'none' | 'cypress' = 'none'
+  const { 
+    name, 
+    directory, 
+    type = 'application', 
+    unitTestrunner = 'none', 
+    e2eTestrunner = 'none', 
+    tree = createTreeWithEmptyWorkspace({ layout: 'apps-libs' }) 
+  } = params;
   tree.write(
     'package.json',
     `
@@ -26,6 +44,7 @@ export async function createTestProject(
 
   if (type === 'application') {
     await applicationGenerator(tree, {
+      name,
       directory,
       linter: Linter.EsLint,
       unitTestRunner: unitTestrunner,
@@ -34,6 +53,7 @@ export async function createTestProject(
   }
   if (type === 'library') {
     await libraryGenerator(tree, {
+      name,
       directory,
       linter: Linter.EsLint,
       unitTestRunner: unitTestrunner,
